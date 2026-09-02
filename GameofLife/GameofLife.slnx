@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="GameofLife.Console/GameofLife.Console.csproj" />
+  <Project Path="GameofLife/GameofLife.csproj" />
+</Solution>
