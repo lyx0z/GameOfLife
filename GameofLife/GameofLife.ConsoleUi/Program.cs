@@ -4,7 +4,7 @@ public class Program
 {
     public static void Main()
     {
-        var conf = BoardSizeSetUp.GetBoardSize();
+        var conf = BoardSizeSetUp.GetBoardInfo();
         new Game(conf).Start();
     }
 }

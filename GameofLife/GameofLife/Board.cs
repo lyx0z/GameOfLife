@@ -14,17 +14,22 @@ public class Board
         }
     }
 
-    public static void RandomGen(bool[,] board)
+    public static void RandomGen(bool[,] board, int aliveCount)
     {
         var generator = new Random();
+        var rows = board.GetLength(0);
+        var cols = board.GetLength(1);
 
-        for (var row = 0; row < board.GetLength(0); row++)
+        var placed = 0;
+        while (placed < aliveCount)
         {
-            for (var col = 0; col < board.GetLength(1); col++)
+            var row = generator.Next(rows);
+            var col = generator.Next(cols);
+
+            if (!board[row, col])
             {
-                var number = generator.NextDouble();
-                var rounded = (int)Math.Round(number);
-                board[row, col] = rounded == 1;
+                board[row, col] = true;
+                placed++;
             }
         }
     }
