@@ -1,17 +1,20 @@
-﻿using GameofLife;
-
-namespace GameofLife.ConsoleUi;
+﻿namespace GameofLife.ConsoleUi;
 
 public class Program
 {
     public static void Main()
     {
-        const bool running = true;
-        var boardSize = BoardSizeSetUp.BoardSizeAsk();
-        while (running)
+        var boardSize = BoardSizeSetUp.GetBoardSize();
+        var board = Board.CreatePlayingBoard(boardSize.BoardHeight, boardSize.BoardWidth);
+
+        Console.Clear();
+        while (true)
         {
+            //updatecells()
+            //etc
+            BoardPrinter.Print(board);
+            Thread.Sleep(700);
             Console.Clear();
-            Board.PlayingBoard(boardSize.BoardWidth, boardSize.BoardHeight);
         }
     }
 }

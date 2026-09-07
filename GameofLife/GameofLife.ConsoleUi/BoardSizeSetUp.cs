@@ -4,7 +4,7 @@ using GameofLife;
 
 public static class BoardSizeSetUp
 {
-    public static BoardSize BoardSizeAsk()
+    public static BoardSize GetBoardSize()
     {
         Console.WriteLine("Whats going to be your board size?");
 
