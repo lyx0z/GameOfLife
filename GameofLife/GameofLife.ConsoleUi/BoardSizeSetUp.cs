@@ -19,16 +19,14 @@ public static class BoardSizeSetUp
 
         if (boardWidth is < 1 or > 40)
         {
-            throw new ArgumentOutOfRangeException($"Oops! Width must be between 1 and 100");
+            throw new ArgumentOutOfRangeException($"Oops! Width must be between 1 and 40");
         }
 
         if (boardHeight is < 1 or > 40)
         {
-            throw new ArgumentOutOfRangeException($"Oops! Height must be between 1 and 100");
+            throw new ArgumentOutOfRangeException($"Oops! Height must be between 1 and 40");
         }
 
-        var boardSize = new BoardSize { BoardWidth = boardWidth, BoardHeight = boardHeight };
-
-        return new GameConfig { Height = boardHeight, Width = boardWidth };
+        return new GameConfig() { Height = boardHeight, Width = boardWidth };
     }
 }

@@ -11,6 +11,7 @@ public class Game
 
     public void Start()
     {
+        Board.RandomGen(board);
         while (true)
         {
             Board.Print(board);
