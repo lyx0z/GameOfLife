@@ -19,12 +19,12 @@ public static class BoardSizeSetUp
             throw new ArgumentOutOfRangeException($"Oops! Please enter whole numbers dimensions");
         }
 
-        if (boardWidth is < 1 or > 100)
+        if (boardWidth is < 1 or > 40)
         {
             throw new ArgumentOutOfRangeException($"Oops! Width must be between 1 and 100");
         }
 
-        if (boardHeight is < 1 or > 100)
+        if (boardHeight is < 1 or > 40)
         {
             throw new ArgumentOutOfRangeException($"Oops! Height must be between 1 and 100");
         }
