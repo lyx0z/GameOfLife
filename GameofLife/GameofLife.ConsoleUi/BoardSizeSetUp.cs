@@ -1,10 +1,8 @@
 ﻿namespace GameofLife.ConsoleUi;
 
-using GameofLife;
-
 public static class BoardSizeSetUp
 {
-    public static BoardSize GetBoardSize()
+    public static GameConfig GetBoardSize()
     {
         Console.WriteLine("Whats going to be your board size?");
 
@@ -31,6 +29,6 @@ public static class BoardSizeSetUp
 
         var boardSize = new BoardSize { BoardWidth = boardWidth, BoardHeight = boardHeight };
 
-        return boardSize;
+        return new GameConfig { Height = boardHeight, Width = boardWidth };
     }
 }
