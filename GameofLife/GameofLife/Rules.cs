@@ -1,6 +1,4 @@
-﻿using System.Data;
-
-namespace GameofLife;
+﻿namespace GameofLife;
 
 public static class Rules
 {
