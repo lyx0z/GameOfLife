@@ -9,11 +9,11 @@ public class Game
     {
         this.config = config;
         board = new bool[config.Height, config.Width];
+        Board.RandomGen(board, config.AliveCount);
     }
 
     public void Start()
     {
-        Board.RandomGen(board, config.AliveCount);
         while (true)
         {
             Board.Print(board);
