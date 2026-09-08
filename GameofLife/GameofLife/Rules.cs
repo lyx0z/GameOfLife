@@ -18,11 +18,11 @@ public static class Rules
                     switch (neighbours)
                     {
                         case 2:
-                            nextGen[row, col] = true;
-                            break;
                         case 3:
+                        {
                             nextGen[row, col] = true;
                             break;
+                        }
                         default:
                             nextGen[row, col] = false;
                             break;
