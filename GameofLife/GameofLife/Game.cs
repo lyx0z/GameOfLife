@@ -19,7 +19,7 @@ public class Game
             Board.Print(board);
             Thread.Sleep(1000);
             Console.Clear();
-            //Board Update
+            board = Board.UpdateBoard(board);
         }
     }
 }

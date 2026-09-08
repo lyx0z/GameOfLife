@@ -33,4 +33,10 @@ public class Board
             }
         }
     }
+
+    public static bool[,] UpdateBoard(bool[,] board)
+    {
+        var newBoard = Rules.ComputeNextMove(board);
+        return newBoard;
+    }
 }
