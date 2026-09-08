@@ -2,7 +2,7 @@
 
 namespace GameofLife;
 
-public class Rules
+public static class Rules
 {
     public static bool[,] ComputeNextMove(bool[,] board)
     {
@@ -11,8 +11,8 @@ public class Rules
         {
             for (var col = 0; col < board.GetLength(1); col++)
             {
-                var neighbours = NeighbourCheck(board, row, col);
                 var isAlive = board[row, col];
+                var neighbours = NeighbourCheck(board, row, col, isAlive);
                 if (isAlive)
                 {
                     switch (neighbours)
@@ -28,15 +28,11 @@ public class Rules
                             break;
                     }
                 }
-                else
+                if (!isAlive)
                 {
                     if (neighbours == 3)
                     {
                         nextGen[row, col] = true;
-                    }
-                    else
-                    {
-                        nextGen[row, col] = false;
                     }
                 }
             }
@@ -45,26 +41,30 @@ public class Rules
         return nextGen;
     }
 
-    private static int NeighbourCheck(bool[,] board, int num1, int num2)
+    private static int NeighbourCheck(bool[,] board, int row, int col, bool isAlive)
     {
         var sum = 0;
 
-        for (var i = -1; i <= 1; i++)
+        for (var rowOffset = -1; rowOffset <= 1; rowOffset++)
         {
-            for (var k = -1; k <= 1; k++)
+            for (var colOffset = -1; colOffset <= 1; colOffset++)
             {
-                try
-                {
-                    if (board[num1 + i, num2 + k])
-                        sum++;
-                }
-                catch
-                {
-                    // ignored
-                }
+                if (rowOffset == 0 && colOffset == 0)
+                    continue;
+
+                var neighbourRow = row + rowOffset;
+                var neighbourCol = col + colOffset;
+
+                if (neighbourRow < 0 || neighbourRow >= board.GetLength(0))
+                    continue;
+                if (neighbourCol < 0 || neighbourCol >= board.GetLength(1))
+                    continue;
+
+                if (board[neighbourRow, neighbourCol])
+                    sum++;
             }
         }
-        sum--;
+
         return sum;
     }
 }
