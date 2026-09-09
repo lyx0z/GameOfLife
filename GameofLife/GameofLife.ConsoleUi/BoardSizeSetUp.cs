@@ -14,37 +14,49 @@ public static class BoardSizeSetUp
 
         if (!widthIsNumber || !heightIsNumber)
         {
-            throw new ArgumentOutOfRangeException(
-                paramName: $"Oops! Please enter whole numbers dimensions"
-            );
+            throw new ArgumentException(message: "Oops! Please enter whole numbers dimensions");
         }
 
-        if (boardWidth is < 1 or > 40)
+        if (boardWidth is < 1 or > 100)
         {
-            throw new ArgumentOutOfRangeException(
-                paramName: $"Oops! Width must be between 1 and 40"
-            );
+            throw new ArgumentException(message: "Oops! Width must be between 1 and 100");
         }
 
-        if (boardHeight is < 1 or > 40)
+        if (boardHeight is < 1 or > 100)
         {
-            throw new ArgumentOutOfRangeException(
-                paramName: $"Oops! Height must be between 1 and 40"
-            );
+            throw new ArgumentException(message: "Oops! Height must be between 1 and 100");
         }
 
-        Console.WriteLine("How many cells should start alive? ");
-        var aliveCountIsNumber = int.TryParse(Console.ReadLine(), out var aliveCount);
+        Console.WriteLine("How many cells should start alive?(num or %) ");
+        var input = Console.ReadLine()?.Trim() ?? "";
 
-        if (!aliveCountIsNumber)
+        int aliveCount;
+
+        if (input.EndsWith($"%"))
         {
-            throw new ArgumentOutOfRangeException(paramName: $"Oops! Please enter a whole number");
+            var isPercent = double.TryParse(input[..^1], out var percent);
+
+            if (!isPercent)
+            {
+                throw new ArgumentException(message: "Oops! Please enter valid percentages");
+            }
+
+            aliveCount = (int)(boardWidth * boardHeight * (percent / 100));
+        }
+        else
+        {
+            var aliveCountIsNumber = int.TryParse(input, out aliveCount);
+
+            if (!aliveCountIsNumber)
+            {
+                throw new ArgumentException(message: "Oops! Please enter a whole number");
+            }
         }
 
         if (aliveCount < 0 || aliveCount > boardWidth * boardHeight)
         {
-            throw new ArgumentOutOfRangeException(
-                paramName: $"Oops! Alive count must be between 0 and {boardWidth * boardHeight}"
+            throw new ArgumentException(
+                message: "Oops! Alive count must be between 0 and {boardWidth * boardHeight}"
             );
         }
 

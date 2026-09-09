@@ -17,7 +17,7 @@ public class Game
         while (true)
         {
             Board.Print(board);
-            Thread.Sleep(1000);
+            Thread.Sleep(100);
             Console.Clear();
             board = Board.UpdateBoard(board);
         }
