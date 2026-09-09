@@ -1,25 +1,26 @@
-﻿namespace GameofLife;
+﻿using static System.Console;
+
+namespace GameofLife;
 
 public class Game
 {
-    private bool[,] board;
-    private readonly GameConfig config;
+    private Board board;
 
     public Game(GameConfig config)
     {
-        this.config = config;
-        board = new bool[config.Height, config.Width];
-        Board.RandomGen(board, config.AliveCount);
+        board = new Board(config.Width, config.Height);
+        board.RandomGen(config.AliveCount);
     }
 
     public void Start()
     {
         while (true)
         {
-            Board.Print(board);
-            Thread.Sleep(100);
-            Console.Clear();
-            board = Board.UpdateBoard(board);
+            CursorVisible = false;
+            board.Print();
+            Thread.Sleep(millisecondsTimeout: 500);
+            Clear();
+            board.UpdateBoard();
         }
     }
 }

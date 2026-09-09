@@ -26,12 +26,9 @@ public static class Rules
                             break;
                     }
                 }
-                if (!isAlive)
+                if (neighbours == 3)
                 {
-                    if (neighbours == 3)
-                    {
-                        nextGen[row, col] = true;
-                    }
+                    nextGen[row, col] = true;
                 }
             }
         }
@@ -48,18 +45,27 @@ public static class Rules
             for (var colOffset = -1; colOffset <= 1; colOffset++)
             {
                 if (rowOffset == 0 && colOffset == 0)
+                {
                     continue;
+                }
 
                 var neighbourRow = row + rowOffset;
                 var neighbourCol = col + colOffset;
 
                 if (neighbourRow < 0 || neighbourRow >= board.GetLength(0))
+                {
                     continue;
+                }
+
                 if (neighbourCol < 0 || neighbourCol >= board.GetLength(1))
+                {
                     continue;
+                }
 
                 if (board[neighbourRow, neighbourCol])
+                {
                     sum++;
+                }
             }
         }
 

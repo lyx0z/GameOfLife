@@ -2,7 +2,14 @@
 
 public class Board
 {
-    public static void Print(bool[,] board)
+    private bool[,] board;
+
+    public Board(int width, int height)
+    {
+        board = new bool[height, width];
+    }
+
+    public void Print()
     {
         for (var row = 0; row < board.GetLength(0); row++)
         {
@@ -14,18 +21,17 @@ public class Board
         }
     }
 
-    public static void RandomGen(bool[,] board, int aliveCount)
+    public void RandomGen(int aliveCount)
     {
         var generator = new Random();
         var rows = board.GetLength(0);
         var cols = board.GetLength(1);
-
         var placed = 0;
+
         while (placed < aliveCount)
         {
             var row = generator.Next(rows);
             var col = generator.Next(cols);
-
             if (!board[row, col])
             {
                 board[row, col] = true;
@@ -34,9 +40,8 @@ public class Board
         }
     }
 
-    public static bool[,] UpdateBoard(bool[,] board)
+    public void UpdateBoard()
     {
-        var newBoard = Rules.ComputeNextMove(board);
-        return newBoard;
+        board = Rules.ComputeNextMove(board);
     }
 }
