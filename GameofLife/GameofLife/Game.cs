@@ -16,10 +16,10 @@ public class Game
     {
         while (true)
         {
+            Clear();
             CursorVisible = false;
             board.Print();
             Thread.Sleep(millisecondsTimeout: 500);
-            Clear();
             board.UpdateBoard();
         }
     }
