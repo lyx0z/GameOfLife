@@ -1,4 +1,4 @@
-﻿namespace GameofLife;
+﻿namespace GameOfLife;
 
 public static class Rules
 {
@@ -10,7 +10,7 @@ public static class Rules
             for (var col = 0; col < board.GetLength(1); col++)
             {
                 var isAlive = board[row, col];
-                var neighbours = NeighbourCheck(board, row, col, isAlive);
+                var neighbours = GetAliveNeighborCount(board, row, col);
                 if (isAlive)
                 {
                     switch (neighbours)
@@ -39,7 +39,7 @@ public static class Rules
         return nextGen;
     }
 
-    private static int NeighbourCheck(bool[,] board, int row, int col, bool isAlive)
+    public static int GetAliveNeighborCount(bool[,] board, int row, int col)
     {
         var sum = 0;
 

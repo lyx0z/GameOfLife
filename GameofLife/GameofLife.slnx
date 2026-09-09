@@ -1,5 +1,5 @@
 <Solution>
   <Project Path="GameofLife.ConsoleUi/GameofLife.ConsoleUi.csproj" />
-  <Project Path="GameOfLife.Test.Unit/GameOfLife.Test.Unit.csproj" />
+  <Project Path="GameOfLife.Test.Units/GameOfLife.Test.Units.csproj" />
   <Project Path="GameofLife/GameofLife.csproj" />
 </Solution>

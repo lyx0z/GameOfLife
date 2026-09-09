@@ -1,4 +1,4 @@
-﻿namespace GameofLife.ConsoleUi;
+﻿namespace GameOfLife.ConsoleUi;
 
 public class Program
 {
