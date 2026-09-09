@@ -26,9 +26,12 @@ public static class Rules
                             break;
                     }
                 }
-                if (neighbours == 3)
+                else
                 {
-                    nextGen[row, col] = true;
+                    if (neighbours == 3)
+                    {
+                        nextGen[row, col] = true;
+                    }
                 }
             }
         }

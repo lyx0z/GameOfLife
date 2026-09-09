@@ -1,6 +1,4 @@
-﻿using static System.Console;
-
-namespace GameofLife;
+﻿namespace GameofLife;
 
 public class Game
 {
@@ -9,15 +7,15 @@ public class Game
     public Game(GameConfig config)
     {
         board = new Board(config.Width, config.Height);
-        board.RandomGen(config.AliveCount);
+        board.GenerateRandom(config.AliveCount);
     }
 
     public void Start()
     {
         while (true)
         {
-            Clear();
-            CursorVisible = false;
+            Console.Clear();
+            Console.CursorVisible = false;
             board.Print();
             Thread.Sleep(millisecondsTimeout: 500);
             board.UpdateBoard();

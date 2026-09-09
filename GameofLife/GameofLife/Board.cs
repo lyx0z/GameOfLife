@@ -21,7 +21,7 @@ public class Board
         }
     }
 
-    public void RandomGen(int aliveCount)
+    public void GenerateRandom(int aliveCount)
     {
         var generator = new Random();
         var rows = board.GetLength(0);
