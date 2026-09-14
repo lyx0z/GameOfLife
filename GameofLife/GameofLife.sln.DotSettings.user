@@ -3,4 +3,7 @@
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::EEC05AB4-AF51-1736-568A-08509F4B3F9E::net10.0::GameOfLife.Test.Units.RulesTest&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
+&lt;/SessionState&gt;</s:String>
+	
+	
+	</wpf:ResourceDictionary>
