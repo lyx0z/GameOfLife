@@ -16,7 +16,7 @@ public static class Rules
         return nextGen;
     }
 
-    public static bool AliveNextGen(bool isAlive, int neighbours)
+    private static bool AliveNextGen(bool isAlive, int neighbours)
     {
         if (isAlive)
         {
