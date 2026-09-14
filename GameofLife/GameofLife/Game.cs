@@ -2,7 +2,7 @@
 
 public class Game
 {
-    private Board board;
+    private readonly Board board;
 
     public Game(GameConfig config)
     {
@@ -17,7 +17,7 @@ public class Game
             Console.Clear();
             Console.CursorVisible = false;
             board.Print();
-            Thread.Sleep(millisecondsTimeout: 500);
+            Thread.Sleep(millisecondsTimeout: 100);
             board.UpdateBoard();
         }
     }

@@ -5,12 +5,29 @@ using GameOfLife;
 public class RulesTest
 {
     [Test]
-    public void ComputeNextMove_TargetCellIsTrueWhenTargetCellIsAliveAndHasTwoNeighbours()
+    public void ComputeNextMove_TargetCellIsFalseWhenTargetCellIsAliveAndHasNoNeighbour()
     {
         // Arrange
         var board = new bool[,]
         {
+            { false, false, false },
             { false, true, false },
+            { false, false, false },
+        };
+        // Act
+        var nextGen = Rules.ComputeNextMove(board);
+        var result = nextGen[1, 1];
+        // Assert
+        Assert.That(result, Is.False);
+    }
+
+    [Test]
+    public void ComputeNextMove_TargetCellIsTrueWhenTargetCellIsAliveAndHasThreeNeighbours()
+    {
+        // Arrange
+        var board = new bool[,]
+        {
+            { true, true, false },
             { false, true, false },
             { false, false, true },
         };
@@ -19,6 +36,23 @@ public class RulesTest
         var result = nextGen[1, 1];
         // Assert
         Assert.That(result, Is.True);
+    }
+
+    [Test]
+    public void ComputeNextMove_TargetCellIsFalseWhenTargetCellIsAliveAndHasFourNeighbours()
+    {
+        // Arrange
+        var board = new bool[,]
+        {
+            { true, true, true },
+            { false, true, false },
+            { false, false, true },
+        };
+        // Act
+        var nextGen = Rules.ComputeNextMove(board);
+        var result = nextGen[1, 1];
+        // Assert
+        Assert.That(result, Is.False);
     }
 
     [Test]

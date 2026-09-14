@@ -1,6 +1,6 @@
 ﻿namespace GameOfLife.ConsoleUi;
 
-public class Program
+public static class Program
 {
     public static void Main()
     {
