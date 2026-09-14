@@ -7,22 +7,21 @@ public static class Rules
         var nextGen = new bool[board.GetLength(0), board.GetLength(1)];
 
         for (var row = 0; row < board.GetLength(0); row++)
-        for (var col = 0; col < board.GetLength(1); col++)
-            nextGen[row, col] = AliveNextGen(
-                board[row, col],
-                GetAliveNeighborCount(board, row, col)
-            );
-
+        {
+            for (var col = 0; col < board.GetLength(1); col++)
+            {
+                nextGen[row, col] = IsAliveNextGen(
+                    board[row, col],
+                    GetAliveNeighborCount(board, row, col)
+                );
+            }
+        }
         return nextGen;
     }
 
-    private static bool AliveNextGen(bool isAlive, int neighbours)
+    private static bool IsAliveNextGen(bool isAlive, int neighbours)
     {
-        if (isAlive)
-        {
-            return neighbours is 2 or 3;
-        }
-        return neighbours == 3;
+        return isAlive ? neighbours is 2 or 3 : neighbours == 3;
     }
 
     public static int GetAliveNeighborCount(bool[,] board, int row, int col)
