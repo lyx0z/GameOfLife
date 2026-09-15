@@ -1,6 +1,6 @@
 ﻿using GameOfLife.Core;
 
-namespace GameoOfLife.ConsoleUi;
+namespace GameOfLife.ConsoleUi;
 
 public static class BoardSizeSetUp
 {

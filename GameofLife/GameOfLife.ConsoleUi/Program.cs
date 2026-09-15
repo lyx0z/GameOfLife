@@ -1,11 +1,11 @@
 ﻿using GameOfLife.Core;
 
-namespace GameoOfLife.ConsoleUi;
+namespace GameOfLife.ConsoleUi;
 
 public class Program
 {
-    private readonly Board board;
-
+    public readonly Board board;
+    
     public Program(GameConfig config)
     {
         board = new Board(config.Width, config.Height);
@@ -16,14 +16,14 @@ public class Program
     {
         var conf = BoardSizeSetUp.GetBoardInfo();
         var program = new Program(conf);
-       
+        var boardPrint = new BoardPrint();
         while (true)
         {
             Console.Clear();
-            Console.CursorVisible = false;
-            program.board.Print();
-            Thread.Sleep(millisecondsTimeout: 100);
-            program.board.UpdateBoard();
+            Console.CursorVisible = false; 
+            boardPrint.Print(program.board); 
+            Thread.Sleep(millisecondsTimeout: 100); 
+            program.board.UpdateBoard(); 
         }
     }
 }

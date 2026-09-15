@@ -9,17 +9,11 @@ public class Board
         board = new bool[height, width];
     }
 
-    public void Print()
-    {
-        for (var row = 0; row < board.GetLength(0); row++)
-        {
-            for (var col = 0; col < board.GetLength(1); col++)
-            {
-                Console.Write(board[row, col] ? "■ " : "  ");
-            }
-            Console.WriteLine();
-        }
-    }
+    public int Height => board.GetLength(0);
+
+    public int Width => board.GetLength(1);
+
+    public bool this[int row, int col] => board[row, col];
 
     public void GenerateRandom(int aliveCount)
     {
