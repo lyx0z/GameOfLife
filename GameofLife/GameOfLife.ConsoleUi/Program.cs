@@ -2,31 +2,19 @@
 
 namespace GameOfLife.ConsoleUi;
 
-public class Program
+internal static class Program
 {
-    public readonly Board board;
-    
-    public Program(GameConfig config)
+    internal static void Main()
     {
-        board = new Board(config.Width, config.Height);
-        board.GenerateRandom(config.AliveCount);
-    }
+        var (width, height, aliveCount) = GameBoardSetup.GetUserInput();
+        var game = new Game(width, height, aliveCount);
+        Console.CursorVisible = false;
 
-    public static void Main()
-    {
-        var conf = BoardSizeSetUp.GetBoardInfo();
-        var program = new Program(conf);
-        var boardPrint = new BoardPrint();
         while (true)
         {
             Console.Clear();
-            Console.CursorVisible = false; 
-            boardPrint.Print(program.board); 
-            Thread.Sleep(millisecondsTimeout: 100); 
-            program.board.UpdateBoard(); 
+            Renderer.PrintBoard(game.GetNextFrame());
+            Thread.Sleep(millisecondsTimeout: 100);
         }
     }
 }
-   
-
-

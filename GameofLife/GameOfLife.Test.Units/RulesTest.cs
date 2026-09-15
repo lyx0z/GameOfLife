@@ -5,156 +5,114 @@ namespace GameOfLife.Test.Units;
 public class RulesTest
 {
     [Test]
-    public void ComputeNextMove_TargetCellIsFalseWhenTargetCellIsAliveAndHasNoNeighbour()
+    public void IsAliveNextFrame_ReturnsFalse_WhenAliveCellHasNoNeighbours()
     {
         // Arrange
-        var board = new[,]
-        {
-            { false, false, false },
-            { false, true, false },
-            { false, false, false },
-        };
+        const bool isAlive = true;
+        const int neighbours = 0;
+
         // Act
-        var nextGen = Rules.ComputeNextMove(board);
-        var result = nextGen[1, 1];
+        var result = Rules.IsAliveNextFrame(isAlive, neighbours);
+
         // Assert
         Assert.That(result, Is.False);
     }
 
     [Test]
-    public void ComputeNextMove_TargetCellIsFalseWhenTargetCellIsAliveAndHasOneNeighbour()
+    public void IsAliveNextFrame_ReturnsFalse_WhenAliveCellHasOneNeighbour()
     {
         // Arrange
-        var board = new[,]
-        {
-            { false, false, false },
-            { false, true, true },
-            { false, false, false },
-        };
+        const bool isAlive = true;
+        const int neighbours = 1;
+
         // Act
-        var nextGen = Rules.ComputeNextMove(board);
-        var result = nextGen[1, 1]; 
-        
+        var result = Rules.IsAliveNextFrame(isAlive, neighbours);
+
         // Assert
         Assert.That(result, Is.False);
     }
 
     [Test]
-    public void ComputeNextMove_TargetCellIsTrueWhenTargetCellIsAliveAndHasTwoNeighbours()
+    public void IsAliveNextFrame_ReturnsTrue_WhenAliveCellHasTwoNeighbours()
     {
         // Arrange
-        var board = new bool[,]
-        {
-            { true, false, false },
-            { false, true, true },
-            { false, false, false },
-        };
+        const bool isAlive = true;
+        const int neighbours = 2;
+
         // Act
-        var nextGen = Rules.ComputeNextMove(board);
-        var result = nextGen[1, 1];
+        var result = Rules.IsAliveNextFrame(isAlive, neighbours);
+
         // Assert
         Assert.That(result, Is.True);
     }
 
     [Test]
-    public void ComputeNextMove_TargetCellIsTrueWhenTargetCellIsAliveAndHasThreeNeighbours()
+    public void IsAliveNextFrame_ReturnsTrue_WhenAliveCellHasThreeNeighbours()
     {
         // Arrange
-        var board = new bool[,]
-        {
-            { true, true, false },
-            { false, true, false },
-            { false, false, true },
-        };
+        const bool isAlive = true;
+        const int neighbours = 3;
+
         // Act
-        var nextGen = Rules.ComputeNextMove(board);
-        var result = nextGen[1, 1];
+        var result = Rules.IsAliveNextFrame(isAlive, neighbours);
+
         // Assert
         Assert.That(result, Is.True);
     }
 
     [Test]
-    public void ComputeNextMove_TargetCellIsFalseWhenTargetCellIsAliveAndHasFourNeighbours()
+    public void IsAliveNextFrame_ReturnsFalse_WhenAliveCellHasFourNeighbours()
     {
         // Arrange
-        var board = new bool[,]
-        {
-            { true, true, true },
-            { false, true, false },
-            { false, false, true },
-        };
+        const bool isAlive = true;
+        const int neighbours = 4;
+
         // Act
-        var nextGen = Rules.ComputeNextMove(board);
-        var result = nextGen[1, 1];
+        var result = Rules.IsAliveNextFrame(isAlive, neighbours);
+
         // Assert
         Assert.That(result, Is.False);
     }
 
     [Test]
-    public void ComputeNextMove_TargetCellIsTrueWhenTargetCellIsNotAliveAndHasThreeNeighbours()
+    public void IsAliveNextFrame_ReturnsTrue_WhenDeadCellHasExactlyThreeNeighbours()
     {
         // Arrange
-        var board = new[,]
-        {
-            { false, false, false },
-            { true, false, true },
-            { false, true, false },
-        };
+        const bool isAlive = false;
+        const int neighbours = 3;
+
         // Act
-        var nextGen = Rules.ComputeNextMove(board);
-        var result = nextGen[1, 1];
+        var result = Rules.IsAliveNextFrame(isAlive, neighbours);
+
         // Assert
         Assert.That(result, Is.True);
     }
 
     [Test]
-    public void ComputeNextMove_TargetCellIsFalseWhenTargetCellIsNotAliveAndHasMoreThenThreeNeighbours()
+    public void IsAliveNextFrame_ReturnsFalse_WhenDeadCellHasMoreThanThreeNeighbours()
     {
         // Arrange
-        var board = new[,]
-        {
-            { false, false, false },
-            { true, false, true },
-            { true, true, false },
-        };
+        const bool isAlive = false;
+        const int neighbours = 4;
+
         // Act
-        var nextGen = Rules.ComputeNextMove(board);
-        var result = nextGen[1, 1];
+        var result = Rules.IsAliveNextFrame(isAlive, neighbours);
+
         // Assert
         Assert.That(result, Is.False);
     }
 
     [Test]
-    public void ComputeNextMove_TargetCellIsFalseWhenTargetCellIsNotAliveAndHasLessThenThreeNeighbours()
+    public void IsAliveNextFrame_ReturnsFalse_WhenDeadCellHasFewerThanThreeNeighbours()
     {
         // Arrange
-        var board = new[,]
-        {
-            { false, false, false },
-            { false, false, false },
-            { true, true, false },
-        };
+        const bool isAlive = false;
+        const int neighbours = 2;
+
         // Act
-        var nextGen = Rules.ComputeNextMove(board);
-        var result = nextGen[1, 1];
+        var result = Rules.IsAliveNextFrame(isAlive, neighbours);
+
         // Assert
         Assert.That(result, Is.False);
-    }
-
-    [Test]
-    public void GetAliveNeighborCount_ReturnsThreeNeighbourSum()
-    {
-        // Arrange
-        var board = new bool[3, 3];
-        board[1, 1] = true;
-        board[0, 1] = true;
-        board[1, 2] = true;
-        board[2, 2] = true;
-
-        // Act
-        var neighbourSum = Rules.GetAliveNeighborCount(board, 1, 1);
-
-        // Assert
-        Assert.That(neighbourSum, Is.EqualTo(3));
     }
 }
