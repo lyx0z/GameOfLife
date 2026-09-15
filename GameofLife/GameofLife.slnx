@@ -1,4 +1,0 @@
-<Solution>
-  <Project Path="GameofLife.ConsoleUi/GameofLife.ConsoleUi.csproj" />
-  <Project Path="GameofLife/GameofLife.csproj" />
-</Solution>

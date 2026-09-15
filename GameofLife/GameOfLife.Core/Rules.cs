@@ -1,45 +1,30 @@
-﻿namespace GameofLife;
+﻿namespace GameOfLife.Core;
 
 public static class Rules
 {
     public static bool[,] ComputeNextMove(bool[,] board)
     {
         var nextGen = new bool[board.GetLength(0), board.GetLength(1)];
+
         for (var row = 0; row < board.GetLength(0); row++)
         {
             for (var col = 0; col < board.GetLength(1); col++)
             {
-                var isAlive = board[row, col];
-                var neighbours = NeighbourCheck(board, row, col, isAlive);
-                if (isAlive)
-                {
-                    switch (neighbours)
-                    {
-                        case 2:
-                        case 3:
-                        {
-                            nextGen[row, col] = true;
-                            break;
-                        }
-                        default:
-                            nextGen[row, col] = false;
-                            break;
-                    }
-                }
-                else
-                {
-                    if (neighbours == 3)
-                    {
-                        nextGen[row, col] = true;
-                    }
-                }
+                nextGen[row, col] = IsAliveNextGen(
+                    board[row, col],
+                    GetAliveNeighborCount(board, row, col)
+                );
             }
         }
-
         return nextGen;
     }
 
-    private static int NeighbourCheck(bool[,] board, int row, int col, bool isAlive)
+    private static bool IsAliveNextGen(bool isAlive, int neighbours)
+    {
+        return isAlive ? neighbours is 2 or 3 : neighbours == 3;
+    }
+
+    public static int GetAliveNeighborCount(bool[,] board, int row, int col)
     {
         var sum = 0;
 

@@ -1,4 +1,4 @@
-﻿namespace GameofLife;
+﻿namespace GameOfLife.Core;
 
 public class GameConfig
 {
