@@ -25,7 +25,7 @@ public class RulesTest
     public void ComputeNextMove_TargetCellIsFalseWhenTargetCellIsAliveAndHasOneNeighbour()
     {
         // Arrange
-        var board = new bool[,]
+        var board = new[,]
         {
             { false, false, false },
             { false, true, true },
@@ -33,13 +33,14 @@ public class RulesTest
         };
         // Act
         var nextGen = Rules.ComputeNextMove(board);
-        var result = nextGen[1, 1];
+        var result = nextGen[1, 1]; 
+        
         // Assert
         Assert.That(result, Is.False);
     }
 
     [Test]
-    public void ComputeNextMove_TargetCellIsFalseWhenTargetCellIsAliveAndHasTwoNeighbours()
+    public void ComputeNextMove_TargetCellIsTrueWhenTargetCellIsAliveAndHasTwoNeighbours()
     {
         // Arrange
         var board = new bool[,]
@@ -90,10 +91,10 @@ public class RulesTest
     }
 
     [Test]
-    public void ComputeNextMove_TargetCellIsFalseWhenTargetCellIsNotAliveAndHasThreeNeighbours()
+    public void ComputeNextMove_TargetCellIsTrueWhenTargetCellIsNotAliveAndHasThreeNeighbours()
     {
         // Arrange
-        var board = new bool[,]
+        var board = new[,]
         {
             { false, false, false },
             { true, false, true },
@@ -110,7 +111,7 @@ public class RulesTest
     public void ComputeNextMove_TargetCellIsFalseWhenTargetCellIsNotAliveAndHasMoreThenThreeNeighbours()
     {
         // Arrange
-        var board = new bool[,]
+        var board = new[,]
         {
             { false, false, false },
             { true, false, true },
@@ -127,7 +128,7 @@ public class RulesTest
     public void ComputeNextMove_TargetCellIsFalseWhenTargetCellIsNotAliveAndHasLessThenThreeNeighbours()
     {
         // Arrange
-        var board = new bool[,]
+        var board = new[,]
         {
             { false, false, false },
             { false, false, false },
