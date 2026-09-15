@@ -1,47 +1,92 @@
-﻿namespace GameOfLife.Core;
+namespace GameOfLife.Core;
 
-public class Board
+internal class Board(int width, int height, int aliveCount)
 {
-    private bool[,] board;
+    private bool[,] board = GenerateRandomBoard(width, height, aliveCount);
 
-    public Board(int width, int height)
-    {
-        board = new bool[height, width];
-    }
+    private int BoardHeight => board.GetLength(0);
 
-    public void Print()
-    {
-        for (var row = 0; row < board.GetLength(0); row++)
-        {
-            for (var col = 0; col < board.GetLength(1); col++)
-            {
-                Console.Write(board[row, col] ? "■ " : "  ");
-            }
-            Console.WriteLine();
-        }
-    }
+    private int BoardWidth => board.GetLength(1);
 
-    public void GenerateRandom(int aliveCount)
+    private static bool[,] GenerateRandomBoard(int width, int height, int aliveCount)
     {
-        var generator = new Random();
-        var rows = board.GetLength(0);
-        var cols = board.GetLength(1);
+        var random = new Random();
+        var board = new bool[height, width];
         var placed = 0;
 
         while (placed < aliveCount)
         {
-            var row = generator.Next(rows);
-            var col = generator.Next(cols);
-            if (!board[row, col])
+            var randomHeight = random.Next(height);
+            var randomWidth = random.Next(width);
+            if (!board[randomHeight, randomWidth])
             {
-                board[row, col] = true;
+                board[randomHeight, randomWidth] = true;
                 placed++;
             }
         }
+
+        return board;
     }
 
-    public void UpdateBoard()
+    public void GenerateNextFrame()
     {
-        board = Rules.ComputeNextMove(board);
+        var nextGen = new bool[BoardHeight, BoardWidth];
+
+        for (var height = 0; height < BoardHeight; height++)
+        {
+            for (var width = 0; width < BoardWidth; width++)
+            {
+                nextGen[height, width] = Rules.IsAliveNextFrame(
+                    board[height, width],
+                    GetAliveNeighborAmount(height, width)
+                );
+            }
+        }
+
+        board = nextGen;
+    }
+
+    private int GetAliveNeighborAmount(int height, int width)
+    {
+        var neighbourAmount = 0;
+
+        for (var heightOffset = -1; heightOffset <= 1; heightOffset++)
+        {
+            for (var widthOffset = -1; widthOffset <= 1; widthOffset++)
+            {
+                if (heightOffset == 0 && widthOffset == 0)
+                {
+                    continue;
+                }
+
+                var neighbourHeight = height + heightOffset;
+                var neighbourWidth = width + widthOffset;
+
+                if (IsOutOfBounds(neighbourHeight, neighbourWidth))
+                {
+                    continue;
+                }
+
+                if (board[neighbourHeight, neighbourWidth])
+                {
+                    neighbourAmount++;
+                }
+            }
+        }
+
+        return neighbourAmount;
+    }
+
+    private bool IsOutOfBounds(int neighbourHeight, int neighbourWidth)
+    {
+        return neighbourHeight < 0
+            || neighbourHeight >= BoardHeight
+            || neighbourWidth < 0
+            || neighbourWidth >= BoardWidth;
+    }
+
+    public bool[,] GetBoard()
+    {
+        return board;
     }
 }

@@ -1,30 +1,28 @@
-﻿using GameOfLife.Core;
+﻿namespace GameOfLife.ConsoleUi;
 
-namespace GameoOfLife.ConsoleUi;
-
-public static class BoardSizeSetUp
+public static class GameBoardSetup
 {
-    public static GameConfig GetBoardInfo()
+    public static (int, int, int) GetUserInput()
     {
         Console.WriteLine("Whats going to be your board size?");
 
         Console.WriteLine("Width: ");
-        var widthIsNumber = int.TryParse(Console.ReadLine(), out var boardWidth);
+        var widthIsNumber = int.TryParse(Console.ReadLine(), out var width);
 
         Console.WriteLine("Height: ");
-        var heightIsNumber = int.TryParse(Console.ReadLine(), out var boardHeight);
+        var heightIsNumber = int.TryParse(Console.ReadLine(), out var height);
 
         if (!widthIsNumber || !heightIsNumber)
         {
             throw new ArgumentException(message: "Oops! Please enter whole numbers dimensions");
         }
 
-        if (boardWidth is < 1 or > 100)
+        if (width is < 1 or > 100)
         {
             throw new ArgumentException(message: "Oops! Width must be between 1 and 100");
         }
 
-        if (boardHeight is < 1 or > 100)
+        if (height is < 1 or > 100)
         {
             throw new ArgumentException(message: "Oops! Height must be between 1 and 100");
         }
@@ -43,7 +41,7 @@ public static class BoardSizeSetUp
                 throw new ArgumentException(message: "Oops! Please enter valid percentages");
             }
 
-            aliveCount = (int)(boardWidth * boardHeight * (percent / 100));
+            aliveCount = (int)(width * height * (percent / 100));
         }
         else
         {
@@ -55,18 +53,13 @@ public static class BoardSizeSetUp
             }
         }
 
-        if (aliveCount < 0 || aliveCount > boardWidth * boardHeight)
+        if (aliveCount < 0 || aliveCount > width * height)
         {
             throw new ArgumentException(
                 message: "Oops! Alive count must be between 0 and {boardWidth * boardHeight}"
             );
         }
 
-        return new GameConfig
-        {
-            Height = boardHeight,
-            Width = boardWidth,
-            AliveCount = aliveCount,
-        };
+        return (width, height, aliveCount);
     }
 }

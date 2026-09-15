@@ -1,0 +1,35 @@
+@page "/gameoflife"
+@using GameOfLife.Core
+
+<PageTitle>Game Of Life</PageTitle>
+<h1>Game Of Life</h1>
+
+<p>Please Input height</p>
+<input type="number" @bind="Height" />
+
+<p>Please input width</p>
+<input type="number" @bind="Width" />
+
+<p>How much cells do you want to start Alive?</p>
+<input type="number" @bind="AliveCount" />
+
+<button @onclick="OnClick">Click Me</button>
+
+@Height
+@Width
+@AliveCount
+
+@code {
+    private int Height;
+    private int Width;
+    private double AliveCount;
+
+    private void OnClick()
+    {
+        Console.WriteLine(Height);
+        Console.WriteLine(Width);
+        Console.WriteLine(AliveCount);
+    }
+
+}
+
