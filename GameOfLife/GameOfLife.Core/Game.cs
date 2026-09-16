@@ -9,4 +9,8 @@ public class Game(int width, int height, int aliveCount)
         board.GenerateNextFrame();
         return board.GetBoard();
     }
+
+    public bool[,] GetCurrentBoard() => board.GetBoard();
+
+    public void Randomize() => board.Randomize();
 }

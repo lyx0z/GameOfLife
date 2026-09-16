@@ -13,23 +13,54 @@
 <p>How much cells do you want to start Alive?</p>
 <input type="number" @bind="AliveCount" />
 
-<button @onclick="OnClick">Click Me</button>
+<button @onclick="OnConfigSubmit">Create Board</button>
+<button @onclick="RandomizeBoard" disabled="@(game is null)">Randomize</button>
+<button @onclick="Start" disabled="@(game is null || isRunning)">Resume</button>
+<button @onclick="Stop" disabled="@(!isRunning)">Pause</button>
 
-@Height
-@Width
-@AliveCount
-
-@code {
-    private int Height;
-    private int Width;
-    private double AliveCount;
-
-    private void OnClick()
+@if (Cells is not null)
+{
+    @for (var row = 0; row < Cells!.GetLength(0); row++)
     {
-        Console.WriteLine(Height);
-        Console.WriteLine(Width);
-        Console.WriteLine(AliveCount);
+        <div style="display: flex">
+            @for (var col = 0; col < Cells!.GetLength(1); col++)
+            {
+                <div style="width: 16px; height: 16px; border: 1px solid #ddd; background: @(Cells![row, col] ? "black" : "white")"></div>
+            }
+        </div>
     }
-
 }
 
+@code {
+    private int Height = 20;
+    private int Width = 20;
+    private int AliveCount = 100;
+
+    private bool isRunning;
+    private Game? game;
+    private bool[,]? Cells => game?.GetCurrentBoard();
+
+    private async Task OnConfigSubmit()
+    {
+        isRunning = false;
+        game = new Game(Width, Height, AliveCount);
+        await Start();
+    }
+
+    private void RandomizeBoard() => game!.Randomize();
+
+    private async Task Start()
+    {
+        if (isRunning) return;
+        isRunning = true;
+
+        while (isRunning)
+        {
+            game!.GetNextFrame();
+            StateHasChanged();
+            await Task.Delay(200);
+        }
+    }
+
+    private void Stop() => isRunning = false;
+}
