@@ -28,6 +28,11 @@ internal class Board(int width, int height, int aliveCount)
         return board;
     }
 
+    public void Randomize()
+    {
+        board = GenerateRandomBoard(width, height, aliveCount);
+    }
+
     public void GenerateNextFrame()
     {
         var nextGen = new bool[BoardHeight, BoardWidth];
