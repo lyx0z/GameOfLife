@@ -1,63 +1,30 @@
 @page "/gameoflife"
-@using GameOfLife.Core
 
 <PageTitle>Game Of Life</PageTitle>
 <h1>Game Of Life</h1>
 
 <p>Please Input height</p>
-<input type="number" @bind="Height" />
+<input type="number" @bind="height" />
 
 <p>Please input width</p>
-<input type="number" @bind="Width" />
+<input type="number" @bind="width" />
 
 <p>How much cells do you want to start Alive?</p>
-<input type="number" @bind="AliveCount" />
+<input type="number" @bind="aliveCount" />
 
 <button @onclick="OnConfigSubmit">Create Board</button>
 <button @onclick="Start" disabled="@(game is null || isRunning)">Resume</button>
 <button @onclick="Stop" disabled="@(!isRunning)">Pause</button>
 
-@if (Cells is not null)
+@if (cells is not null)
 {
-    @for (var row = 0; row < Width; row++)
+    @for (var row = 0; row < width; row++)
     {
         <div style="display: flex">
-            @for (var col = 0; col < Height; col++)
+            @for (var col = 0; col < height; col++)
             {
-                <div style="width: 16px; height: 16px; border: 1px solid #ddd; background: @(Cells![row, col] ? "black" : "white")"></div>
+                <div style="width: 16px; height: 16px; border: 1px solid #ddd; background: @(cells![row, col] ? "black" : "white")"></div>
             }
         </div>
     }
-}
-
-@code {
-    private int Height = 20;
-    private int Width = 20;
-    private int AliveCount = 100;
-
-    private bool isRunning;
-    private Game? game;
-    private bool[,]? Cells; 
-
-    private async Task OnConfigSubmit()
-    {
-        isRunning = false;
-        game = new Game(Width, Height, AliveCount);
-        await Start();
-    }
-    
-    private async Task Start()
-    {
-        if (isRunning) return;
-        isRunning = true;
-
-        while (isRunning)
-        {
-            Cells = game!.GetNextFrame();
-            StateHasChanged();
-            await Task.Delay(200);
-        }
-    }
-
-    private void Stop() => isRunning = false;
 }
