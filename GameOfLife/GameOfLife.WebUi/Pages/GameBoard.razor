@@ -1,39 +1,42 @@
 @page "/"
 
 <PageTitle>Game Of Life</PageTitle>
-<h1>Game Of Life</h1>
-    <div class = "div">
-        <div>
-            <label>
-                <p>Height</p>
-                <input class="input" type="number" min="1" max="100" @bind="height" style="width: 8rem"/>
-            </label>
-            <div class = "div">
-                <button class="button" @onclick="OnConfigSubmit">Create Board</button>
+<div class="mainTitleWrapDiv">
+    <div class="mainTitleDiv">
+        <h1>Game Of Life</h1>
+        <div class="centeringDiv">
+            <div>
+                <label>
+                    <p style="text-align: center">Height</p>
+                    <input class="input" type="number" min="1" max="100" @bind="height" style="width: 8rem"/>
+                </label>
+                <div class="centeringDiv">
+                    <button class="button" @onclick="OnConfigSubmit">Create Board</button>
+                </div>
             </div>
-        </div>
-        <div>
-            <label>
-                <p>Width</p>
-                <input class="input" type="number" min="1" max="100" @bind="width" style="width: 8rem"/>
-            </label>
-            <div class="div">
-                <button class="button" @onclick="Start" disabled="@(game is null || isRunning)">Resume</button>
+            <div>
+                <label>
+                    <p style="text-align: center">Width</p>
+                    <input class="input" type="number" min="1" max="100" @bind="width" style="width: 8rem"/>
+                </label>
+                <div class="centeringDiv">
+                    <button class="button" @onclick="Start" disabled="@(game is null || isRunning)">Resume</button>
+                </div>
             </div>
-        </div>
 
-        <div>
-            <label>
-                <p>Amount Alive</p>
-                <input class="input" type="number" min="1" max="100" @bind="aliveCount" style="width: 8rem"/>
-            </label>
-            <div class="div">
-                <button class="button" @onclick="Stop" disabled="@(!isRunning)">Pause</button>
+            <div>
+                <label>
+                    <p style="text-align: center">Amount Alive</p>
+                    <input class="input" type="number" min="1" max="100" @bind="aliveCount" style="width: 8rem"/>
+                </label>
+                <div class="centeringDiv">
+                    <button class="button" @onclick="Stop" disabled="@(!isRunning)">Pause</button>
+                </div>
             </div>
         </div>
     </div>
-
-<div class="div">
+</div>
+<div class="centeringDiv">
     @if (cells is not null)
     {
         <div class="boardDiv">

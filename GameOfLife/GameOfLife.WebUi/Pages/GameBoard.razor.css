@@ -52,7 +52,7 @@ p {
     border-radius: 8px;
 }
 
-.div{
+.centeringDiv{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -61,7 +61,7 @@ p {
 .boardDiv{
     justify-content: center;
     align-items: center;
-    border: 10px solid #000000;
+    border: 10px solid rgb(0 0 0 / 0.72);
     max-width: fit-content;
 }
 
@@ -72,4 +72,17 @@ p {
 
 .alive-or-dead.alive {
     background: linear-gradient(to bottom right, #66f75f, #3B82F6);
+}
+
+.mainTitleWrapDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.mainTitleDiv {
+    background: rgb(9 9 16 / 0.6);
+    border-radius: 8px;
+    max-width: fit-content;
 }
