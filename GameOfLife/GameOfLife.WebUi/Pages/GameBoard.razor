@@ -2,13 +2,13 @@
 
 <PageTitle>Game Of Life</PageTitle>
 <h1>Game Of Life</h1>
-    <div style="display: flex">
+    <div class = "div">
         <div>
             <label>
                 <p>Height</p>
                 <input class="input" type="number" min="1" max="100" @bind="height" style="width: 8rem"/>
             </label>
-            <div>
+            <div class = "div">
                 <button class="button" @onclick="OnConfigSubmit">Create Board</button>
             </div>
         </div>
@@ -17,27 +17,35 @@
                 <p>Width</p>
                 <input class="input" type="number" min="1" max="100" @bind="width" style="width: 8rem"/>
             </label>
-            <button class="button" @onclick="Start" disabled="@(game is null || isRunning)">Resume</button>
+            <div class="div">
+                <button class="button" @onclick="Start" disabled="@(game is null || isRunning)">Resume</button>
+            </div>
         </div>
 
         <div>
             <label>
-                <p>Amount of Alive Cells</p>
+                <p>Amount Alive</p>
                 <input class="input" type="number" min="1" max="100" @bind="aliveCount" style="width: 8rem"/>
             </label>
-            <button class="button" @onclick="Stop" disabled="@(!isRunning)">Pause</button>
+            <div class="div">
+                <button class="button" @onclick="Stop" disabled="@(!isRunning)">Pause</button>
+            </div>
         </div>
     </div>
 
-@if (cells is not null)
-{
-    @for (var row = 0; row < width; row++)
+<div class="div">
+    @if (cells is not null)
     {
-        <div style="display: flex">
-            @for (var col = 0; col < height; col++)
+        <div class="boardDiv">
+            @for (var row = 0; row < width; row++)
             {
-                <div class="alive-or-dead @(cells![row, col] ? "alive" : "dead")" style="width: 16px; height: 16px;"></div>
+                <div style="display: flex">
+                    @for (var col = 0; col < height; col++)
+                    {
+                        <div class="alive-or-dead @(cells![row, col] ? "alive" : "dead")" style="width: 16px; height: 16px;"></div>
+                    }
+                </div>
             }
         </div>
     }
-}
+</div>
