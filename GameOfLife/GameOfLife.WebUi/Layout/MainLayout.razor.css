@@ -1,37 +1,67 @@
+.page {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #191a1a;
+    background-image: radial-gradient(circle at 10% 0%, rgb(92 255 206 / 0.25) 0%, transparent 45%),
+        radial-gradient(circle at 90% 100%, rgba(59, 130, 246, 0.25) 0%, transparent 45%);
+}
+
 .container {
     max-width: 100%;
     width: 100%;
-    height: 100%;
+    min-height: calc(100vh - 56px);
     --color: rgba(114, 114, 114, 0.3);
-    background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent),
-    linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent);
+    background-image:
+        linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%, transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%, transparent),
+        linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%, transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%, transparent);
     background-size: 55px 55px;
     margin: 0;
 }
-
-.page {
-    width: 100%;
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(circle at 10% 0%, rgb(92 255 206 / 0.25) 0%, transparent 45%),
-    radial-gradient(circle at 90% 100%, rgba(59, 130, 246, 0.25) 0%, transparent 45%);
-    height: 100vh;
-    background-color: #191a1a;
+.top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    background: rgba(10, 8, 6, 0.75);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(242, 236, 228, 0.08);
 }
-main {
-    flex: 1;
+
+
+.nav-logo {
+    font-family: 'JetBrains Mono', 'Consolas', monospace;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: linear-gradient(to right, #5cffce, #3B82F6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-@media (min-width: 641px) {
-    .page {
-        flex-direction: row;
-    }
 
-    .sidebar {
-        width: 250px;
-        height: 100vh;
-        position: sticky;
-        top: 0;
-    }
+.nav-links {
+    display: flex;
+    gap: 8px;
+}
+
+
+.nav-btn {
+    font-family: 'JetBrains Mono', 'Consolas', monospace;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(236, 231, 223, 0.7);
+    text-decoration: none;
+    padding: 6px 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(236, 231, 223, 0.12);
+    background: transparent;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
 }
