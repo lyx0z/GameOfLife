@@ -86,3 +86,17 @@ p {
     border-radius: 8px;
     max-width: fit-content;
 }
+
+.top-nav {
+    height: 50px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    width: 100%;
+    background: rgb(10 8 6 / 0.6);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(242, 236, 228, 0.06);
+    margin-bottom: 25px;
+}
