@@ -1,21 +1,25 @@
+/* The whole page: grid lines on top, glow gradients underneath.
+   Everything lives on this one element so it always fills the window. */
 .page {
+    --color: rgba(114, 114, 114, 0.3);
     width: 100%;
     min-height: 100vh;
     background-color: #191a1a;
-    background-image: radial-gradient(circle at 10% 0%, rgb(92 255 206 / 0.25) 0%, transparent 45%),
-        radial-gradient(circle at 90% 100%, rgba(59, 130, 246, 0.25) 0%, transparent 45%);
-}
-
-.container {
-    max-width: 100%;
-    width: 100%;
-    min-height: calc(100vh - 56px);
-    --color: rgba(114, 114, 114, 0.3);
     background-image:
         linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%, transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%, transparent),
-        linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%, transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%, transparent);
-    background-size: 55px 55px;
-    margin: 0;
+        linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%, transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%, transparent),
+        radial-gradient(circle at 10% 0%, rgb(92 255 206 / 0.25) 0%, transparent 45%),
+        radial-gradient(circle at 90% 100%, rgba(59, 130, 246, 0.25) 0%, transparent 45%);
+    background-size: 55px 55px, 55px 55px, 100% 100%, 100% 100%;
+    background-repeat: repeat, repeat, no-repeat, no-repeat;
+    background-attachment: fixed, fixed, fixed, fixed;
+}
+
+/* Wrapper for the page content. The padding also stops the child's
+   top margin from leaking out and pushing the layout down. */
+.content-area {
+    width: 100%;
+    padding: 1px 0 40px;
 }
 .top-nav {
     position: sticky;
