@@ -1,5 +1,3 @@
-/* The whole page: grid lines on top, glow gradients underneath.
-   Everything lives on this one element so it always fills the window. */
 .page {
     --color: rgba(114, 114, 114, 0.3);
     width: 100%;
@@ -15,8 +13,6 @@
     background-attachment: fixed, fixed, fixed, fixed;
 }
 
-/* Wrapper for the page content. The padding also stops the child's
-   top margin from leaking out and pushing the layout down. */
 .content-area {
     width: 100%;
     padding: 1px 0 40px;
@@ -36,7 +32,6 @@
     border-bottom: 1px solid rgba(242, 236, 228, 0.08);
 }
 
-
 .nav-logo {
     font-family: 'JetBrains Mono', 'Consolas', monospace;
     font-size: 1rem;
@@ -49,12 +44,10 @@
     background-clip: text;
 }
 
-
 .nav-links {
     display: flex;
     gap: 8px;
 }
-
 
 .nav-btn {
     font-family: 'JetBrains Mono', 'Consolas', monospace;
