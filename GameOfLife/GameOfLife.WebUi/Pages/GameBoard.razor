@@ -22,7 +22,7 @@
                     <input class="input" type="number" min="1" max="100" @bind="width" style="width: 8rem"/>
                 </label>
                 <div class="centeringDiv">
-                    <button class="button" @onclick="Start" disabled="@(game is null || isRunning)">Resume</button>
+                    <button class="button" @onclick="Resume">Resume</button>
                 </div>
             </div>
 
@@ -32,7 +32,7 @@
                     <input class="input" type="number" min="1" max="100" @bind="aliveCount" style="width: 8rem"/>
                 </label>
                 <div class="centeringDiv">
-                    <button class="button" @onclick="Stop" disabled="@(!isRunning)">Pause</button>
+                    <button class="button" @onclick="Stop" >Pause</button>
                 </div>
             </div>
         </div>
@@ -42,10 +42,10 @@
     @if (cells is not null)
     {
         <div class="boardDiv">
-            @for (var row = 0; row < width; row++)
+            @for (var row = 0; row < cells.GetLength(0); row++)
             {
                 <div style="display: flex">
-                    @for (var col = 0; col < height; col++)
+                    @for (var col = 0; col < cells.GetLength(1); col++)
                     {
                         <div class="alive-or-dead @(cells![row, col] ? "alive" : "dead")" style="width: 16px; height: 16px;"></div>
                     }
