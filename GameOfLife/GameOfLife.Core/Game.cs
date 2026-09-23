@@ -6,7 +6,8 @@ public class Game(int width, int height, int aliveCount)
 
     public bool[,] GetNextFrame()
     {
+        var clipboard = board.GetBoard();
         board.GenerateNextFrame();
-        return board.GetBoard();
+        return clipboard;
     }
 }
