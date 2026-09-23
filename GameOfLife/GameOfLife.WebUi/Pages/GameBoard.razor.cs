@@ -34,4 +34,11 @@ public partial class GameBoard
     }
 
     private void Stop() => isRunning = false;
+
+    private void SwapState(int cellId)
+    {
+        var totalWidth = cellId % width;
+        var totalHeight = cellId / width;
+        game!.SwapState(totalWidth, totalHeight);
+    }
 }
