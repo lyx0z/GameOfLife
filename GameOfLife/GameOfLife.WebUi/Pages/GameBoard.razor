@@ -18,12 +18,15 @@
 
 @if (cells is not null)
 {
+    var cellId = 0;
+    
     @for (var row = 0; row < width; row++)
     {
         <div style="display: flex">
             @for (var col = 0; col < height; col++)
             {
-                <div style="width: 16px; height: 16px; border: 1px solid #ddd; background: @(cells![row, col] ? "black" : "white")"></div>
+                var id = cellId;
+                <div @onclick="@(e => SwapState(id))" id="@(cellId++)" style="width: 16px; height: 16px; border: 1px solid #ddd; background: @(cells![row, col] ? "black" : "white")"></div>
             }
         </div>
     }
