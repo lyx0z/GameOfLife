@@ -51,10 +51,11 @@ public partial class GameBoard : IDisposable
         }
     }
 
-    private void SwapState(int cellId)
+    private void SwapCell(int cellId)
     {
         var totalWidth = cellId % width;
         var totalHeight = cellId / width;
+        cells![totalHeight, totalWidth] = !cells[totalHeight, totalWidth];
         game!.SwapState(totalWidth, totalHeight);
     }
 

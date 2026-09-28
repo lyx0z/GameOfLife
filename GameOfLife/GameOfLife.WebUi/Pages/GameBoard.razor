@@ -50,7 +50,7 @@
                     @for (var col = 0; col < cells.GetLength(1); col++)
                     {
                         var id = cellId;
-                        <div class=@(cells![row, col] ? "alive" : "dead") @onclick="@(e => SwapState(id))" id="@(cellId++)"></div>
+                        <div class=@(cells![row, col] ? "alive" : "dead") @onclick="@(e => SwapCell(id))" id="@(cellId++)"></div>
                     }
                 </div>
             }
