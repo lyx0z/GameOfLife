@@ -64,18 +64,18 @@ p {
     max-width: fit-content;
 }
 
-.dead {
-    background: black;
-    border: 2px solid black;;
+:is(.alive, .dead) {
+    border: 2px solid black;
     width: 16px;
     height: 16px;
 }
 
+.dead {
+    background: #090910;
+}
+
 .alive {
     background: linear-gradient(to bottom right, #66f75f, #3B82F6);
-    border: 2px solid black;;
-    width: 16px;
-    height: 16px;
 }
 
 .main-title-wrap-div {
