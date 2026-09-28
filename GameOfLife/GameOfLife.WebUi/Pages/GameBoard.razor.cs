@@ -51,6 +51,13 @@ public partial class GameBoard : IDisposable
         }
     }
 
+    private void SwapState(int cellId)
+    {
+        var totalWidth = cellId % width;
+        var totalHeight = cellId / width;
+        game!.SwapState(totalWidth, totalHeight);
+    }
+
     public void Dispose()
     {
         cancellationTokenSource?.Dispose();
