@@ -1,33 +1,59 @@
 @page "/gameoflife"
 
 <PageTitle>Game Of Life</PageTitle>
-<h1>Game Of Life</h1>
 
-<p>Please Input height</p>
-<input type="number" @bind="height" />
+<h1 class="page-title">Game Of Life</h1>
 
-<p>Please input width</p>
-<input type="number" @bind="width" />
+<div class="main-title-wrap">
+    <div class="main-title">
+        <div class="centering-div ">
+            <div>
+                <label>
+                    <p style="text-align: center">Height</p>
+                    <input class="input" type="number" min="1" max="100" @bind="height" style="width: 8rem"/>
+                </label>
+                <div class="centering-div">
+                    <button class="button" @onclick="OnConfigSubmit">Create Board</button>
+                </div>
+            </div>
+            <div>
+                <label>
+                    <p style="text-align: center">Width</p>
+                    <input class="input" type="number" min="1" max="100" @bind="width" style="width: 8rem"/>
+                </label>
+                <div class="centering-div">
+                    <button class="button" @onclick="Resume">Resume</button>
+                </div>
+            </div>
 
-<p>How much cells do you want to start Alive?</p>
-<input type="number" @bind="aliveCount" />
-
-<button @onclick="OnConfigSubmit">Create Board</button>
-<button @onclick="Start" disabled="@(game is null || isRunning)">Resume</button>
-<button @onclick="Stop" disabled="@(!isRunning)">Pause</button>
-
-@if (cells is not null)
-{
-    var cellId = 0;
-    
-    @for (var row = 0; row < width; row++)
+            <div>
+                <label>
+                    <p style="text-align: center">Amount Alive</p>
+                    <input class="input" type="number" min="1" max="100" @bind="aliveCount" style="width: 8rem"/>
+                </label>
+                <div class="centering-div">
+                    <button class="button" @onclick="Stop" >Pause</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="centering-div">
+    @if (cells is not null)
     {
-        <div style="display: flex">
-            @for (var col = 0; col < height; col++)
+        var cellId = 0;
+        
+        <div class="board-div">
+            @for (var row = 0; row < cells.GetLength(0); row++)
             {
-                var id = cellId;
-                <div @onclick="@(e => SwapState(id))" id="@(cellId++)" style="width: 16px; height: 16px; border: 1px solid #ddd; background: @(cells![row, col] ? "black" : "white")"></div>
+                <div style="display:flex">
+                    @for (var col = 0; col < cells.GetLength(1); col++)
+                    {
+                        var id = cellId;
+                        <div class=@(cells![row, col] ? "alive" : "dead") @onclick="@(e => SwapState(id))" id="@(cellId++)"></div>
+                    }
+                </div>
             }
         </div>
     }
-}
+</div>
