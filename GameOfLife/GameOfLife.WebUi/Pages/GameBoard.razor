@@ -4,15 +4,15 @@
 
 <h1 class="page-title">Game Of Life</h1>
 
-<div class="mainTitleWrapDiv">
-    <div class="mainTitleDiv">
-        <div class="centeringDiv ">
+<div class="main-title-wrap-div">
+    <div class="main-title-div">
+        <div class="centering-div ">
             <div>
                 <label>
                     <p style="text-align: center">Height</p>
                     <input class="input" type="number" min="1" max="100" @bind="height" style="width: 8rem"/>
                 </label>
-                <div class="centeringDiv">
+                <div class="centering-div">
                     <button class="button" @onclick="OnConfigSubmit">Create Board</button>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                     <p style="text-align: center">Width</p>
                     <input class="input" type="number" min="1" max="100" @bind="width" style="width: 8rem"/>
                 </label>
-                <div class="centeringDiv">
+                <div class="centering-div">
                     <button class="button" @onclick="Resume">Resume</button>
                 </div>
             </div>
@@ -31,17 +31,17 @@
                     <p style="text-align: center">Amount Alive</p>
                     <input class="input" type="number" min="1" max="100" @bind="aliveCount" style="width: 8rem"/>
                 </label>
-                <div class="centeringDiv">
+                <div class="centering-div">
                     <button class="button" @onclick="Stop" >Pause</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div class="centeringDiv">
+<div class="centering-div">
     @if (cells is not null)
     {
-        <div class="boardDiv">
+        <div class="board-div">
             @for (var row = 0; row < cells.GetLength(0); row++)
             {
                 <div style="display: flex">

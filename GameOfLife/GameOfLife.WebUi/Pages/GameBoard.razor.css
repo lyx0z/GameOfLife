@@ -51,13 +51,13 @@ p {
     border-radius: 8px;
 }
 
-.centeringDiv{
+.centering-div{
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.boardDiv{
+.board-div{
     justify-content: center;
     align-items: center;
     border: 10px solid rgb(0 0 0 / 0.72);
@@ -73,14 +73,14 @@ p {
     background: linear-gradient(to bottom right, #66f75f, #3B82F6);
 }
 
-.mainTitleWrapDiv {
+.main-title-wrap-div {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 30px;
 }
 
-.mainTitleDiv {
+.main-title-div {
     background: rgb(9 9 16 / 0.6);
     border-radius: 8px;
     max-width: fit-content;

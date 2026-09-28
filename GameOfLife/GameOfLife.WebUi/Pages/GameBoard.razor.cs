@@ -42,11 +42,6 @@ public partial class GameBoard : IDisposable
         cancellationTokenSource = null;
     }
 
-    public void Dispose()
-    {
-        cancellationTokenSource?.Dispose();
-    }
-
     private async Task Resume()
     {
         if (cancellationTokenSource is null)
@@ -54,5 +49,11 @@ public partial class GameBoard : IDisposable
             cancellationTokenSource = new CancellationTokenSource();
             await Start(cancellationTokenSource.Token);
         }
+    }
+
+    public void Dispose()
+    {
+        cancellationTokenSource?.Dispose();
+        cancellationTokenSource = null;
     }
 }
