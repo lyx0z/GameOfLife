@@ -78,14 +78,14 @@ p {
     background: linear-gradient(to bottom right, #66f75f, #3B82F6);
 }
 
-.main-title-wrap-div {
+.main-title-wrap {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 30px;
 }
 
-.main-title-div {
+.main-title {
     background: rgb(9 9 16 / 0.6);
     border-radius: 8px;
     max-width: fit-content;

@@ -14,7 +14,7 @@ p {
     letter-spacing: 0.05em;
 }
 
-.main-title-wrap-div {
+.main-title-wrap {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -22,7 +22,7 @@ p {
     margin-bottom: 30px;
 }
 
-.main-title-div {
+.main-title {
     color: rgb(255 255 255 / 0.6);
     background: rgb(9 9 16 / 0.6);
     border-radius: 8px;
