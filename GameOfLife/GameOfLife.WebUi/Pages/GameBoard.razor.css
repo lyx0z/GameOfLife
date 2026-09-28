@@ -57,20 +57,25 @@ p {
     align-items: center;
 }
 
-.board-div{
+.board-div {
     justify-content: center;
     align-items: center;
     border: 10px solid rgb(0 0 0 / 0.72);
     max-width: fit-content;
 }
 
-.alive-or-dead.dead {
-    background: #090910;
-    border: 1px solid rgb(236 231 223 / 0.22);
+.dead {
+    background: black;
+    border: 2px solid black;;
+    width: 16px;
+    height: 16px;
 }
 
-.alive-or-dead.alive {
+.alive {
     background: linear-gradient(to bottom right, #66f75f, #3B82F6);
+    border: 2px solid black;;
+    width: 16px;
+    height: 16px;
 }
 
 .main-title-wrap-div {
