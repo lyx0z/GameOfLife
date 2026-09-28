@@ -9,7 +9,6 @@
     background-size: 55px 55px, 55px 55px, 100% 100%, 100% 100%;
     background-repeat: repeat, repeat, no-repeat, no-repeat;
     background-attachment: fixed, fixed, fixed, fixed;
-    height: 100vh;
 }
 
 .content-area {
