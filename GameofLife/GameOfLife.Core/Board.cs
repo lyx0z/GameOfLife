@@ -89,4 +89,9 @@ internal class Board(int width, int height, int aliveCount)
     {
         return board;
     }
+
+    public void SwapState(int width, int height)
+    {
+        board[height, width] = !board[height, width];
+    }
 }
